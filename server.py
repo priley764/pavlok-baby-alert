@@ -10,7 +10,7 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-def send_vibe(val=80):
+def send_vibe(val=100):
     payload = {"stimulus": {"stimulusType": "vibe", "stimulusValue": val}}
     requests.post(URL, headers=HEADERS, json=payload)
     time.sleep(2)
@@ -23,7 +23,7 @@ def send_beep(val=20):
 @app.route("/babyalert", methods=["POST"])
 def baby_alert():
     for i in range(1, 15):
-        send_vibe(80)
+        send_vibe(100)
         if i % 7 == 0:
             send_beep(20)
     return jsonify({"message": "Vibration pattern complete"})
